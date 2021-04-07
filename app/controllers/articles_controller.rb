@@ -15,7 +15,13 @@ class ArticlesController < ApplicationController
 	end
 
 	def create
-		render plain: params[:article]
+		#by making it an ainstance variable, we can use it outside.
+		@article = Article.new(params.require(:article).permit(:title, :description))
+		@article.save
+		redirect_to @article
+		#This redirects to the specific artile. Rails is smart enough to extract the ID
+		#renders info to the screen render plain: params[:article]
+		#of particular note, the render will show you what is being passed via the params hash
 	end
 
 end
