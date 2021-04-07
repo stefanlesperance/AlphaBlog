@@ -7,4 +7,8 @@ class ArticlesController < ApplicationController
 		#article = Article.find(params[:id]) - Params is a hash, and will nab it from the HTML(?)
 	end
 
+	def index
+		@articles = Article.all	
+	end
+
 end
