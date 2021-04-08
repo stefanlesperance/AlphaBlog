@@ -1,36 +1,6 @@
 <h1>Create a New Article</h1>
 
 <!-- The below code indicates, in order, if there are any messages, to iterate through the entire list and display them -->
-<% if @article.errors.any? %>
-	<h2>The following errors prevented the article from being saved.</h2>
-		<ul>
-			<% @article.errors.full_messages.each do |msg| %>
-				<li><%= msg %></li>
-			<% end %>
-		</ul>
-<% end %>
-
-<%= form_with scope: :article, url: articles_path, local: true do |f|%>
-	<p>
-		<%= f.label :title %>
-	</p>
-
-	<p>
-		<%= f.text_field :title %>
-	</p>
-
-		<p>
-		<%= f.label :description %>
-	</p>
-
-	<p>
-		<%= f.text_area :description %>
-	</p>
-
-	<P>
-		<%= f.submit%>
-	</P>
-
-<% end %>
+<%= render 'form' %>
 
 <%= link_to 'Return', articles_path %>
