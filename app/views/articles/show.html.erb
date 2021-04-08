@@ -2,3 +2,9 @@
 
 <p><strong><%= @article.title %></strong></p>
 <p><strong><%= @article.description %></strong></p>
+
+<!-- Notice the difference between this formatting and the one in Index -->
+<!-- I need to specify, to pass the specific value in this scenario, because I don't have the iterator calling up info for me -->
+<%= link_to 'Edit', edit_article_path(@article) %>
+<%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "Are you sure?"} %>
+<%= link_to 'Listing', articles_path %>

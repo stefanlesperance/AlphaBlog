@@ -49,6 +49,10 @@ class ArticlesController < ApplicationController
 	end
 
 	def destroy
+		#receiving article id is done via link, because Destroy does not have a view like the others.
+		@article = Article.find(params[:id])
+		@article.destroy
+		redirect_to articles_path
 	end
 
 end
