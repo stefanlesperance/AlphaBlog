@@ -8,28 +8,23 @@
 <% end %>
 
 <!-- The scope: :article changes, because :article provides me with an empty form. I need something different. Existing information. -->
-
 <!-- We replace scope: with model: because rails, when it sees the model, will pre-fill the empty information  -->
 <!-- The below will work for both NEW and EDIT, thus it is what I snip out for my partial -->
-<%= form_with(model: @article, local: true ) do |f|%>
-	<p>
-		<%= f.label :title %>
-	</p>
 
-	<p>
-		<%= f.text_field :title %>
-	</p>
+<%= form_with(model: @article, local: true ) do |f|%>
+	<div class = "form-group row">
+			<%= f.label :title, class: "col-2 col-form-label" %>
+		<div class = "col-10" >	
+			<%= f.text_field :title, class: "form-control" %>
+		</div>
+	<div class = "form-group row">
+			<%= f.label :description, class: "col-2 col-form-label" %>
+		<div class = "col-10">	
+			<%= f.text_area :description, class: "form-control" %>
+		</div>
 
 		<p>
-		<%= f.label :description %>
-	</p>
-
-	<p>
-		<%= f.text_area :description %>
-	</p>
-
-	<p>
-		<%= f.submit%>
-	</p>
-
+			<%= f.submit%>
+		</p>
+	</div>
 <% end %>

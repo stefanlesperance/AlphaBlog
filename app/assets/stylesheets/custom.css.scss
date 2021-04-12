@@ -1,5 +1,17 @@
 @import 'bootstrap/dist/css/bootstrap';
 
+html {
+height: 100%;
+}
+
+body {
+height: 100%;
+}
+
+.gradient {
+	height: 100%;
+}
+
 .navbar {
 	background-color: black ! important;
 }
