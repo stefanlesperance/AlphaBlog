@@ -50,13 +50,13 @@ height: 100%;
 }
 
   #sticky-footer {
+  	position:relative;
     width: 100%;
-    left: 0;
     bottom: 0;
   } 
 
 
-  #page-content {
+ #page-content {
   flex: 1 0 auto;
   background-color: lightgrey;
 }

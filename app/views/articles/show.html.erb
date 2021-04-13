@@ -1,10 +1,24 @@
-<h1>This is the Show Function Page</h1>
+<h2 class = "text-center mt-4"><%= @article.title %></h2>
+<div class = "container ">
+	<div class="row justify-content-center">
+		<div class="col-8 mt-4">
+				<div class="card text-center shadow mb-5 bg-white rounded">
+					<div class="card-header fst-italic">
+						By Stefan L'Esperance
+					</div>
+					<div class="card-body">
+						<div class="card-text text-start"><%= simple_format(@article.description) %></div>
+						<div class="btn-group" role="group" aria-label="Basic example">
+							<%= button_to 'Edit', edit_article_path(@article), method: :get, class: "btn btn-outline-info mx-1" %>
+							<%= button_to 'Delete', article_path(@article), method: :delete, class: "btn btn-outline-danger mx-1" %>
+						</div>
+					</div>
+					<div class="card-footer text-muted">
+						<small>Created <%= time_ago_in_words(@article.created_at) %> ago,
+							Edited <%= time_ago_in_words(@article.updated_at) %></small>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-<p><strong><%= @article.title %></strong></p>
-<p><strong><%= @article.description %></strong></p>
-
-<!-- Notice the difference between this formatting and the one in Index -->
-<!-- I need to specify, to pass the specific value in this scenario, because I don't have the iterator calling up info for me -->
-<%= link_to 'Edit', edit_article_path(@article) %>
-<%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "Are you sure?"} %>
-<%= link_to 'Listing', articles_path %>

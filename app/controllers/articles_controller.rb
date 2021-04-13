@@ -3,8 +3,8 @@ class ArticlesController < ApplicationController
 	before_action :set_article, only: [:show, :edit, :update, :destroy]
 
 	def show
+		
 		#retrieving data from the database using the Article ID - Correct Method Below
-
 		#incorrect method below
 		#article = Article.find(params[:id]) - Params is a hash, and will nab it from the HTML(?)
 	end
