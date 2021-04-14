@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
 
 	def index
 		@articles = Article.all	
+		@user = User.new
 	end
 
 	def new
