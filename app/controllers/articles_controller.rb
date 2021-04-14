@@ -24,6 +24,7 @@ class ArticlesController < ApplicationController
 	def create
 		#by making it an ainstance variable, we can use it outside.
 		@article = Article.new(set_params)
+		@article.user = User.first
 		if @article.save
 			flash[:notice] = "Article was successfully created."
 			redirect_to @article
@@ -38,6 +39,7 @@ class ArticlesController < ApplicationController
 	def update
 		#The below bit takes the parameter provided by the Hash, the Article ID, and finds it.
 		#Once found, if the button is clicked, it whitelists the Title and Description, and tells them to compare and if need be change it.
+		@article.user = User.first
 		if @article.update(set_params)
 			#Following that, if it is SUCCESSFUL (true/false) it will send a notice and redirect.
 			flash[:notice] = "Article was updated successfully"
