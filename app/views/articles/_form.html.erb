@@ -4,7 +4,8 @@
 	<!-- The below will work for both NEW and EDIT, thus it is what I snip out for my partial -->
 	<div class="row justify-content-center">
 		<div class="col-10">
-			<%= render 'shared/errors'%>
+			<!-- By doing objL @article - means if form is rendered, it will convert obj to @article -->
+			<%= render 'shared/errors', obj: @article%>
 			<%= form_with(model: @article, class: "shadow p-3 mb-3 bg-info rounded", local: true) do |f| %>
 			<div class="form-group row">
 				<%= f.label :title, class: "col-2 col-form-label text-light" %>
