@@ -24,8 +24,7 @@ class ArticlesController < ApplicationController
 	def create
 		#by making it an ainstance variable, we can use it outside.
 		@article = Article.new(set_params)
-		@article.user = Users.first
-		puts @article.user = Users.first
+		@article.user = User.first
 		if @article.save
 			flash[:notice] = "Article was successfully created."
 			redirect_to @article
