@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
 	before_action :set_article, only: [:show, :edit, :update, :destroy]
 
 	def show
-		
+		@article.user = User.first
 		#retrieving data from the database using the Article ID - Correct Method Below
 		#incorrect method below
 		#article = Article.find(params[:id]) - Params is a hash, and will nab it from the HTML(?)
@@ -24,7 +24,8 @@ class ArticlesController < ApplicationController
 	def create
 		#by making it an ainstance variable, we can use it outside.
 		@article = Article.new(set_params)
-		@article.user = User.first
+		@article.user = Users.first
+		puts @article.user = Users.first
 		if @article.save
 			flash[:notice] = "Article was successfully created."
 			redirect_to @article
