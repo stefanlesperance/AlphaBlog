@@ -1,4 +1,4 @@
-class User < ApplicationRecord
+class Users < ApplicationRecord
 	#The self in the below line references the object in each email class.
 	before_save {self.email = email.downcase}
 	has_many :articles
