@@ -1,6 +1,9 @@
 class ArticlesController < ApplicationController
 	#This will summon the set_article method before each action i.e. show, edit etc. that requires an article to be set
 	before_action :set_article, only: [:show, :edit, :update, :destroy]
+	before_action :require_user, except: [:index, :show]
+	#Code executes in top down format. Improperly aligning things will cause it to explode
+	before_action :require_same_user, only: [:edit, :update, :destroy]
 
 	def show
 		#retrieving data from the database using the Article ID - Correct Method Below
@@ -66,6 +69,13 @@ class ArticlesController < ApplicationController
 
 	def set_params
 		params.require(:article).permit(:title, :description)
+	end
+
+	def require_same_user
+		if current_user != @article.user
+			flash[:alert] = "You cannot edit this article."
+			redirect_to @article
+		end
 	end
 
 
