@@ -10,8 +10,10 @@
 					<div class="card-body">
 						<div class="card-text text-start"><%= simple_format(@article.description) %></div>
 						<div class="btn-group" role="group" aria-label="Basic example">
-							<%= button_to 'Edit', edit_article_path(@article), method: :get, class: "btn btn-outline-info mx-1" %>
-							<%= button_to 'Delete', article_path(@article), method: :delete, class: "btn btn-outline-danger mx-1" %>
+							<% if logged_in? && @article.user == current_user %>
+								<%= button_to 'Edit', edit_article_path(@article), method: :get, class: "btn btn-outline-info mx-1" %>
+								<%= button_to 'Delete', article_path(@article), method: :delete, class: "btn btn-outline-danger mx-1" %>
+							<% end%>
 						</div>
 					</div>
 					<div class="card-footer text-muted">
