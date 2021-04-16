@@ -8,14 +8,9 @@ module ApplicationHelper
 		image_tag(gravatar_url, alt: user.username, class: "rounded shadow mx-auto d-block")
 	end
 
-	def current_user
-		#return the details of the user that has logged in
-		#using session has, we have access to the user.id
-		@current_user ||= User.find(session[:user_id])  if session[:user_id]
-			
-	end
 
 	def logged_in?
+		## !! plus variable = turns it into a boolean
 		!!current_user
 	end
 
