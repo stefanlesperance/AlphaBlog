@@ -2,12 +2,25 @@
 	<!-- The below code indicates, in order, if there are any messages, to iterate through the entire list and display them -->
 <%= gravatar_for @user, size: 200 %>
 <br>
+
 <div class="text-center mt4">
 	<%= link_to"Edit Profile", edit_user_path(@user), class: "btn btn-info" %>
 </div>
 
+
 <h3 class = "text-center mt-4">Articles</h3>
+
+
+<div class = "flickr_pagination mb-4 mt-4">
+	<%= will_paginate @articles, :container => false %>
+</div>
+
 
 <!-- Show articles related specifically and only for that user -->
 <!-- I need to figure out how to make it so if @article.user = user basically -->
 <%= render 'articles/article'%>
+
+
+<div class = "flickr_pagination mb-4 mt-4">
+	<%= will_paginate @articles, :container => false %>
+</div>
