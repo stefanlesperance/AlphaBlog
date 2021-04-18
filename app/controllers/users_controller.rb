@@ -29,6 +29,8 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
+    #Admin can also delete their own account. Simplest way of enabling them to do that. Not sure it's a great idea though...
+    session[:user_id] = nil if @user == current_user
     #Now we need to remove the session and the articles.
     #If you leave session[:user_id] set to something deleted, it will throw an error
     # You have options: 1)Clear cookies from broswer, 2) Go to code, in app controller, hardcode it to a different user_id to get back in, then log the user out.
@@ -62,7 +64,7 @@ class UsersController < ApplicationController
   end
 
   def require_same_user
-    if current_user != @user
+    if current_user != @user && !current_user.admin?
       flash[:alert] = "You can only edit your own user profile."
       redirect_to @user
     end

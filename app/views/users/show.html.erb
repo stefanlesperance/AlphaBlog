@@ -4,7 +4,7 @@
 <br>
 
 <div class="text-center mt4">
-	<% if logged_in? && @user == current_user %>
+	<% if logged_in? && (@user == current_user || current_user.admin?) %>
 		<%= link_to"Edit Profile", edit_user_path(@user), class: "btn btn-info" %>
 	<% end %>
 	

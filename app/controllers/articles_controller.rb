@@ -41,7 +41,6 @@ class ArticlesController < ApplicationController
 	def update
 		#The below bit takes the parameter provided by the Hash, the Article ID, and finds it.
 		#Once found, if the button is clicked, it whitelists the Title and Description, and tells them to compare and if need be change it.
-		@article.user = User.last
 		if @article.update(set_params)
 			#Following that, if it is SUCCESSFUL (true/false) it will send a notice and redirect.
 			flash[:notice] = "Article was updated successfully"
@@ -72,7 +71,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def require_same_user
-		if current_user != @article.user
+		if current_user != @article.user && !current_user.admin?
 			flash[:alert] = "You cannot edit this article."
 			redirect_to @article
 		end

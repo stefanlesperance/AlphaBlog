@@ -23,8 +23,11 @@
 					
 					<div class="btn-group" role="group" aria-label="Basic example">
 						<%= button_to 'View Profile', user, method: :get, class: "btn btn-outline-success mx-1" %>
-						<% if logged_in? && user == current_user %>
+						<% if logged_in? && (user == current_user || current_user.admin?) %>
 							<%= button_to 'Edit Profile', edit_user_path(user) , method: :get, class: "btn btn-outline-info mx-1" %>
+						<% end %>
+						<% if logged_in? && current_user.admin? %>	
+							<%= button_to 'Delete Profile', user_path(user) , method: :delete, class: "btn btn-outline-danger mx-1" , data: {confirm: "Are you sure you want delete this user and all associated articles?" }%>
 						<% end %>
 					</div>
 				</div>
