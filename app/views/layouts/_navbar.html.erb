@@ -29,6 +29,7 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><%= link_to "View Profile", user_path(current_user), class: "dropdown-item" %></li>
               <li><%= link_to "Edit Profile", edit_user_path(current_user), class: "dropdown-item" %></li>
+              <li><%= link_to "Delete Profile", user_path(current_user), method: :delete ,class: "dropdown-item text-danger" %></li>
             </ul>
           </li>
         <% end %>

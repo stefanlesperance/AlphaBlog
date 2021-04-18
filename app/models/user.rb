@@ -1,7 +1,8 @@
 class User < ApplicationRecord
 	#The self in the below line references the object in each email class.
 	before_save {self.email = email.downcase}
-	has_many :articles
+	#dependent: :destroy -> Indicates that if a user is deleted, any associated dependents are destroyed as well.
+	has_many :articles, dependent: :destroy
 
 	validates :username, uniqueness: { case_sensitive: false}, 
 				presence: true, 
