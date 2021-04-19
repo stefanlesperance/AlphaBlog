@@ -16,4 +16,8 @@ class User < ApplicationRecord
 				format: { with: VALID_EMAIL_REGEX } 
 
 	has_secure_password
+
+	def password_digest=(hashed_psw)
+    	hashed_password = hashed_psw
+    end
 end
