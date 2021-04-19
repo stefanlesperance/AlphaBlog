@@ -19,5 +19,5 @@ class User < ApplicationRecord
 
 	def password_digest=(hashed_psw)
     	hashed_password = hashed_psw
-    end
+  	end
 end
