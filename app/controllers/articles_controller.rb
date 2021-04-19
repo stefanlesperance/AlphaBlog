@@ -54,6 +54,7 @@ class ArticlesController < ApplicationController
 	def destroy
 		#receiving article id is done via link, because Destroy does not have a view like the others.
 		@article.destroy
+		flash[:notice] = "Article was deleted successfully"
 		redirect_to articles_path
 	end
 
