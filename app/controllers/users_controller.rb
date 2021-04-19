@@ -16,10 +16,10 @@ class UsersController < ApplicationController
     @users = User.paginate(page: params[:page], per_page: 5)
   end
 
-   def create
+  def create
     @user = User.new(user_params)
     if @user.save
-      session[:user_id] = @user.id 
+      session[:user_id] = @user.id
       flash[:notice] = "Welcome to the Alpha Blog #{@user.username}, you have successfully signed up"
       redirect_to articles_path
     else
