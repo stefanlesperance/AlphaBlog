@@ -1,6 +1,6 @@
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-      <%= link_to"ALPHA BLOG", root_path, class: "navbar-brand", id: "logo"%>
+    <%= link_to"ALPHA BLOG", root_path, class: "navbar-brand", id: "logo"%>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,34 +9,43 @@
         <li class="nav-item">
           <%= link_to "About", pages_about_path, class: "nav-link active" %>
         </li>
-          <li class="nav-item">
+        <li class="nav-item">
           <%= link_to "Bloggers", users_path, class: "nav-link active" %>
         </li>
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Articles
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><%= link_to "Create Article", new_article_path, class: "dropdown-item" %></li>
-              <li><%= link_to "Articles", articles_path, class: "dropdown-item" %></li>
-            </ul>
-          </li>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Articles
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><%= link_to "Create Article", new_article_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Articles", articles_path, class: "dropdown-item" %></li>
+          </ul>
+        </li>
         <% if logged_in? %>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <%= ("Admin" if current_user.admin?) %> Profile[<%= current_user.username%>]
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><%= link_to "View Profile", user_path(current_user), class: "dropdown-item" %></li>
-              <li><%= link_to "Edit Profile", edit_user_path(current_user), class: "dropdown-item" %></li>
-              <li><%= link_to "Delete Profile", user_path(current_user), method: :delete ,class: "dropdown-item text-danger" %></li>
-            </ul>
-          </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Categories
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><%= link_to "Create Category", new_category_path, class: "dropdown-item" %></li>
+            <li><%= link_to "View Categories", categories_path, class: "dropdown-item" %></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= ("Admin" if current_user.admin?) %> Profile[<%= current_user.username%>]
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><%= link_to "View Profile", user_path(current_user), class: "dropdown-item" %></li>
+            <li><%= link_to "Edit Profile", edit_user_path(current_user), class: "dropdown-item" %></li>
+            <li><%= link_to "Delete Profile", user_path(current_user), method: :delete ,class: "dropdown-item text-danger" %></li>
+          </ul>
+        </li>
         <% end %>
         <% if logged_in?%>
-          <li class="nav-item">
-            <%= link_to "Logout", logout_path, class: "nav-link", method: :delete %>
-          </li>
+        <li class="nav-item">
+          <%= link_to "Logout", logout_path, class: "nav-link", method: :delete %>
+        </li>
         <% else %>
         <li class="nav-item">
           <%= link_to "Login", login_path, class: "nav-link" %>
