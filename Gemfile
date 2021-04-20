@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'will_paginate', '~> 3.3'
+gem 'rexml', '~> 3.2', '>= 3.2.4'
 
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
