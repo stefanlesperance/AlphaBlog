@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-
+	before_action :require_admin, except: [:index, :show]
 	def new
 		@category = Category.new
 	end
@@ -31,6 +31,11 @@ class CategoriesController < ApplicationController
 		params.require(:category).permit(:name)
 	end
 
-
-
+	def require_admin
+		#If you check for admin without verifying logged in, you will crash.
+		if  !(logged_in? && current_user.admin?)
+			flash[:danger] = "You cannot create Categories without Administrative privileges"
+			redirect_to categories_path
+		end
+	end
 end
