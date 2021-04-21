@@ -18,6 +18,8 @@ class ArticlesController < ApplicationController
 	def new
 		#Generates an empty instance of Article 
 		@article = Article.new
+		#Gives me the entirety of the Categories
+		@categorylist = Category.all
 	end
 
 	def edit
@@ -68,7 +70,8 @@ class ArticlesController < ApplicationController
 	end
 
 	def set_params
-		params.require(:article).permit(:title, :description)
+		# category_ids: [] -> Indicates I should whitelist the array being passed. Array is the key here, not category-_ids
+		params.require(:article).permit(:title, :description, category_ids: [])
 	end
 
 	def require_same_user
