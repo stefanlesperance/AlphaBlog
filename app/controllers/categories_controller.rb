@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
-	before_action :require_admin, except: [:index, :show]
+	before_action :set_category, only: [:show, :edit, :update]
+	before_action :require_admin, except: [:index, :show, :edit]
+
 	def new
 		@category = Category.new
 	end
@@ -18,9 +20,28 @@ class CategoriesController < ApplicationController
 		end
 	end
 
+	def edit
+	end
+
+	def update
+		if @category.update(category_params)
+	      flash[:notice] = "Category successfully updated"
+	      redirect_to @category
+	    else
+      		render 'edit'
+    	end
+	end
+
+	 # def destroy
+	 #    @category.destroy
+	 #    flash[:notice] = "Category has been destroyed"
+	 #    redirect_to articles_path
+ 	#  end
+
+
 
 	def show
-		@category = Category.find(params[:id])
+		@articles = @category.articles.paginate(page: params[:page], per_page: 5)
 	end
 
 
@@ -29,6 +50,10 @@ class CategoriesController < ApplicationController
 	def category_params
 		#Note, the :category - is the top level key. Need to know more on this
 		params.require(:category).permit(:name)
+	end
+
+	def set_category
+		@category = Category.find(params[:id])
 	end
 
 	def require_admin

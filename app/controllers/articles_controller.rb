@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
 		#retrieving data from the database using the Article ID - Correct Method Below
 		#incorrect method below
 		#article = Article.find(params[:id]) - Params is a hash, and will nab it from the HTML(?)
+		# good faith effort - missing one piece @categorylist = ArticleCategory.find(@article.id)
 	end
 
 	def index
